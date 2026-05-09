@@ -3,106 +3,30 @@
 }
 @using TravelTrip.Models.Siniflar
 @model List<Blog>
-    @using TravelTrip.Helper
+@using TravelTrip.Helper
 
-
-<head>
-    <style>
-        /* Ana kapsayıcı */
-        .travel-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-top: 30px;
-            width: 100%;
-        }
-
-        /* Her bir kart */
-        .travel-item {
-            flex: 1;
-            max-width: 31%;
-            text-align: center;
-        }
-
-        /* Görsel Çerçevesi */
-        .travel-img-wrapper {
-            border: 1px solid #e1e1e1;
-            padding: 5px;
-            background-color: #fff;
-            margin-bottom: 12px;
-        }
-
-            .travel-img-wrapper img {
-                width: 100%;
-                height: 160px;
-                object-fit: cover;
-                display: block;
-            }
-
-        /* Başlık */
-        .travel-item h4 {
-            color: #b04a5a;
-            font-size: 15px;
-            margin: 5px 0;
-            font-weight: 600;
-        }
-
-        /* Klasik Blog Tarih Stili */
-        .travel-date {
-            font-size: 11px; /* Daha küçük */
-            color: #999; /* Daha hafif gri */
-            text-transform: uppercase; /* Modern bloglardaki gibi büyük harf seçeneği */
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 10px;
-            font-style: italic; /* Blog havası katar */
-        }
-
-        .travel-desc {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .travel-btn {
-            display: inline-block;
-            background-color: #b04a5a;
-            color: #fff !important;
-            padding: 5px 12px;
-            font-size: 11px;
-            text-decoration: none;
-            border-radius: 2px;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<div class="travel-grid">
+<div class="blog-cards">
     @foreach (var i in Model.OrderByDescending(x => x.ID).Take(3))
     {
-        <div class="travel-item">
-            <div class="travel-img-wrapper">
-                <img src="@i.BlogImage" alt="">
+        <div class="blog-card">
+            <div class="blog-card-img">
+                <img src="@i.BlogImage" alt="@i.Baslik">
             </div>
-
-            <h4>@i.Baslik</h4>
-
-            <span class="travel-date">
-                <i class="fa fa-calendar"></i> @i.Tarih.ToShortDateString()
-            </span>
-
-            <p class="travel-desc">
-                @if (i.Aciklama.Length > 70)
-                {
-                    @i.Aciklama.KelimeBolmedenKisalt(70)<span>...</span>
-                }
-                else
-                {
-                    @i.Aciklama
-                }
-            </p>
-
-            <a href="/Blog/BlogDetay/@i.ID" class="travel-btn">Devamını Oku</a>
+            <div class="blog-card-body">
+                <h4 class="blog-card-title">@i.Baslik</h4>
+                <span class="blog-card-date">@i.Tarih.ToShortDateString()</span>
+                <p class="blog-card-desc">
+                    @if (i.Aciklama.Length > 70)
+                    {
+                        @i.Aciklama.KelimeBolmedenKisalt(70)<span>.....</span>
+                    }
+                    else
+                    {
+                        @i.Aciklama
+                    }
+                </p>
+                <a href="/Blog/BlogDetay/@i.ID" class="blog-card-btn">Devamını Oku</a>
+            </div>
         </div>
     }
 </div>

@@ -1,21 +1,31 @@
 ﻿@using TravelTrip.Models.Siniflar
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hakkımızda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="content">
     <div class="wrap">
-        <div class="about">
-            <h3>Hakkımızda</h3>
+        <div class="about-page">
+
+            <div class="about-hero">
+                <h3>Hakkımızda</h3>
+                <p class="about-lead">Seyahat etmek, sadece bir yerden bir yere gitmek değil; dünyayı yeni bir gözle görmektir.</p>
+            </div>
 
             @foreach (var i in Model)
             {
-                <img src="@i.FotoURL" alt="" />
-                <p>@i.Aciklama</p>
+                <div class="about-block">
+                    <div class="about-img">
+                        <img src="@i.FotoURL" alt="" />
+                    </div>
+                    <div class="about-text">
+                        <p>@i.Aciklama</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             }
+
         </div>
     </div>
 </div>
-
-

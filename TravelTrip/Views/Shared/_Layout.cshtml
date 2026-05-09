@@ -1,69 +1,101 @@
-﻿<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
+﻿<!DOCTYPE HTML>
+<html lang="tr">
 <head>
-    <title>Free Easy-Trip Website Template | Home :: w3layouts</title>
+    <title>@ViewBag.Title - Seyahat Blogu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="~/web/css/style.css" type="text/css" media="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="~/web/css/style.css" type="text/css" media="all" />
     <link href="~/web/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <script src="~/web/js/jquery.min.js"></script>
     <script src="~/web/js/responsiveslides.min.js"></script>
-
     <script>
-        // You can also use "$(window).load(function() {"
-        $(function () { 
-            // Slideshow 1
+        $(function () {
             $("#slider1").responsiveSlides({
-                auto: true,
-                nav: true,
-                speed: 500,
-                namespace: "callbacks",
+                auto: true, nav: true, speed: 500, namespace: "callbacks"
             });
         });
     </script>
 </head>
 <body>
-    <div class="header">
+
+    <div class="topbar">
         <div class="wrap">
-            <div class="logo"><a href="/Home/Index"><img src="~/web/images/logo.png" alt="" /></a></div>
-            <div class="con-right">
-                <div class="grid1-l-img">
-                    <img src="~/web/images/contact.png" alt="">
-                </div>
-                <div class="grid1-l-desc">
-                    <p>İletişim : +90 212 000 00 00</p>
-                </div>
-                <div class="clear"></div>
+            <span class="topbar-contact">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.43a16 16 0 006.59 6.59l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                +90 212 000 00 00
+            </span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="wrap">
+            <div class="site-logo">
+                <a href="/Home/Index">
+                    <span class="logo-icon">&#9992;</span>
+                    <span class="logo-text">Seyahat<em>Blogu</em></span>
+                </a>
             </div>
-            <div class="clear"></div>
+            <nav class="site-nav">
+                <ul id="nav">
+                    <li><a href="/Home/Index">Ana Sayfa</a></li>
+                    <li><a href="/About/Index">Hakkımızda</a></li>
+                    <li><a href="/Blog/Index">Blog</a></li>
+                    <li><a href="/Home/Contact" class="nav-cta">İletişim</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Menüyü aç/kapat">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
         </div>
-    </div>
-    <div class="header-bottom">
+    </header>
+
+    <!-- CONTENT -->
+    <main class="site-main">
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
         <div class="wrap">
-            <ul id="nav">
-                <li><a href="/Home/Index">Ana Sayfa</a></li>
-                <li><a class="hsubs" href="/About/Index">Hakkımızda</a></li>
-                
-                <li><a class="hsubs" href="/Blog/Index">Blogum</a></li>
-                <li><a href="/Home/Contact">İletişim</a></li>
-            </ul>
-        </div>
-    </div>
-  <main>
-      @RenderBody()
-  </main>
-    <div class="footer-bottom">
-        <div class="wrap">
-            <div class="copy">
-                <p>&copy; 2013 Easy-Trip. All Rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="logo-icon">&#9992;</span>
+                    <span class="logo-text">Seyahat<em>Blogu</em></span>
+                    <p>Dünyanın dört bir yanından tatil ve seyahat hikayeleri.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Sayfalar</h4>
+                    <ul>
+                        <li><a href="/Home/Index">Ana Sayfa</a></li>
+                        <li><a href="/About/Index">Hakkımızda</a></li>
+                        <li><a href="/Blog/Index">Blog</a></li>
+                        <li><a href="/Home/Contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>İletişim</h4>
+                    <p>+90 212 000 00 00</p>
+                    <p>info@seyahatblogu.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SeyahatBlogu. Tüm hakları saklıdır.</p>
             </div>
         </div>
-    </div>
+    </footer>
+
+    <script>
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('#nav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function () {
+                nav.classList.toggle('open');
+                toggle.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>

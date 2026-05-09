@@ -33,7 +33,12 @@ namespace TravelTrip.Controllers
             by.Deger3 = c.Blogs.OrderByDescending(x => x.ID).Take(3).ToList();
             return PartialView(by);
         }
-       [HttpGet]
+        public PartialViewResult Partial2()
+        {
+            by.Deger4=c.Yorumlars.OrderByDescending(x => x.ID).Take(3).ToList();
+            return PartialView(by);
+        }
+        [HttpGet]
        public PartialViewResult YorumYap(int id)
         {
             ViewBag.deger = id;

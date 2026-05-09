@@ -176,25 +176,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="web2\about.html" />
-    <Content Include="web2\contact.html" />
-    <Content Include="web2\css\bootstrap.css" />
-    <Content Include="web2\css\style.css" />
-    <Content Include="web2\images\avatar.png" />
-    <Content Include="web2\images\icon3.png" />
-    <Content Include="web2\images\logo.jpg" />
-    <Content Include="web2\images\man.jpg" />
-    <Content Include="web2\images\more.png" />
-    <Content Include="web2\images\post1.jpg" />
-    <Content Include="web2\images\post2.jpg" />
-    <Content Include="web2\images\post3.jpg" />
-    <Content Include="web2\images\search.png" />
-    <Content Include="web2\index.html" />
-    <Content Include="web2\js\easing.js" />
-    <Content Include="web2\js\jquery.min.js" />
-    <Content Include="web2\js\move-top.js" />
-    <Content Include="web2\single.html" />
-    <Content Include="web2\w3layouts-License.txt" />
     <Content Include="weblogin\css\style.css" />
     <Content Include="weblogin\images\b4.jpg" />
     <Content Include="weblogin\images\kapadokya.jpg" />
@@ -283,6 +264,7 @@
     <Content Include="Views\Admin\Contact.cshtml" />
     <Content Include="Views\Admin\Hakkimizda.cshtml" />
     <Content Include="Views\Admin\HakkimizdaGuncelle.cshtml" />
+    <Content Include="Views\Blog\Partial2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

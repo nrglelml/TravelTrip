@@ -4,14 +4,15 @@
 {
     <script>Swal.fire('Teşekkürler!', 'Yorumunuz başarıyla iletildi.', 'success');</script>
 }
+
 <div class="content-form">
     @using (Html.BeginForm("YorumYap", "Blog", FormMethod.Post))
     {
         @Html.Hidden("BlogID", (object)ViewBag.deger)
+
         <input type="text" placeholder="Kullanıcı Adı" name="KullaniciAdi" required />
-        <input type="text" placeholder="Mail" name="Mail" required />
-        <textarea placeholder="Yorum" name="Yorum" required></textarea>
-        <input type="submit" value="GÖNDER" />
+        <input type="text" placeholder="E-posta Adresi" name="Mail" required />
+        <textarea placeholder="Yorumunuzu buraya yazın..." name="Yorum" required></textarea>
+        <input type="submit" value="Gönder" />
     }
 </div>
-

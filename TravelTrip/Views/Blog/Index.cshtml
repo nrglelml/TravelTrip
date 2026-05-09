@@ -1,75 +1,39 @@
 ﻿@model TravelTrip.Models.Siniflar.BlogYorum
-    @using TravelTrip.Helper
+@using TravelTrip.Helper
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<head>
-    <link href="~/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="~/web2/css/style.css" rel='stylesheet' type='text/css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!----webfonts---->
-    <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
-    <!----//webfonts---->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--end slider -->
-    <!--script-->
-    <script type="text/javascript" src="~/web2/js/move-top.js"></script>
-    <script type="text/javascript" src="~/web2/js/easing.js"></script>
-    <!--/script-->
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
-            });
-        });
-    </script>
-</head>
-    <div class="single">
-        <div class="container">
-            <div class="col-md-8 single-main">
-                <div class="single-grid">
-                    @foreach (var i in Model.Deger1)
-                    {
-                       <img src="@Url.Content(i.BlogImage)" alt="" style="margin-bottom:20px; width:100%; height:auto;" />
-                        <br />
-                        <a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a>
-                        <p>@i.Aciklama.KelimeBolmedenKisalt(200) <a href="/Blog/BlogDetay/@i.ID">Devamını Oku</a></p>
-                       
-                    }
-
-                    <br />
-
-                </div>
-                <br/>
-                
-
+<div class="content">
+    <div class="wrap">
+        <div class="blog-layout">
+            <div class="blog-main">
+                @foreach (var i in Model.Deger1)
+                {
+                    <article class="blog-post-card">
+                        <div class="blog-post-img">
+                            <a href="/Blog/BlogDetay/@i.ID">
+                                <img src="@Url.Content(i.BlogImage)" alt="@i.Baslik" />
+                            </a>
+                        </div>
+                        <div class="blog-post-body">
+                            <h2 class="blog-post-title">
+                                <a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a>
+                            </h2>
+                            <p class="blog-post-excerpt">
+                                @i.Aciklama.KelimeBolmedenKisalt(200)...
+                                <a href="/Blog/BlogDetay/@i.ID" class="read-more-link">Devamını Oku →</a>
+                            </p>
+                        </div>
+                    </article>
+                }
             </div>
-@Html.Action("Partial1","Blog")
-                <div class="comments">
-                    <h3>SON YORUMLAR</h3>
-                    <ul>
-                        <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-                        <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
-                        <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
-                    </ul>
-                </div>
-               
-              
-            </div>
-           
+            <aside class="blog-sidebar">
+                @Html.Action("Partial1", "Blog")
+                @Html.Action("Partial2", "Blog")
+            </aside>
+
         </div>
     </div>
-
-  
-
-
-
+</div>

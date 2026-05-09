@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@model TravelTrip.Models.Siniflar.BlogYorum
+@using TravelTrip.Helper
+
+<div class="sidebar-widget">
+    <h4 class="sidebar-title">Son Yorumlar</h4>
+    <ul class="sidebar-comments-list">
+        @foreach (var i in Model.Deger4)
+        {
+            <li>
+                <a href="/Blog/BlogDetay/@i.BlogID">
+                    <span class="comment-user">@i.KullaniciAdi</span>
+                    <span class="comment-preview">@i.Yorum.KelimeBolmedenKisalt(50)</span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

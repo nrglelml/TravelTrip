@@ -11,11 +11,13 @@
         @foreach (var i in Model.Take(3))
         {
             <div class="bot-img">
-                <img src="@i.BlogImage" alt="" />
+                <img src="@i.BlogImage" alt="@i.Baslik" />
             </div>
             <div class="bot-desc">
-                <h5><a href="/Blog/BlogDetay/@i.ID" style="color:darkcyan">@i.Baslik</a></h5>
-                <p> @i.Aciklama.KelimeBolmedenKisalt(70)</p>
+                <h5 class="bot-desc-title">
+                    <a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a>
+                </h5>
+                <p>@i.Aciklama.KelimeBolmedenKisalt(70)</p>
             </div>
             <div class="clear"></div>
         }
@@ -24,14 +26,15 @@
         @foreach (var i in Model.Where(x => x.ID >= 7 && x.ID <= 9).OrderByDescending(x => x.ID))
         {
             <div class="bot-img">
-                <img src="@i.BlogImage" alt="" />
+                <img src="@i.BlogImage" alt="@i.Baslik" />
             </div>
             <div class="bot-desc">
-                <h5><a href="/Blog/BlogDetay/@i.ID" style="color:darkcyan">@i.Baslik</a></h5>
-                <p> @i.Aciklama.KelimeBolmedenKisalt(70)</p>
+                <h5 class="bot-desc-title">
+                    <a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a>
+                </h5>
+                <p>@i.Aciklama.KelimeBolmedenKisalt(70)</p>
             </div>
             <div class="clear"></div>
         }
-       
     </div>
 </div>
