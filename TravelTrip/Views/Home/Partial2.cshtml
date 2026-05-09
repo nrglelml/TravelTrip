@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+@using TravelTrip.Models.Siniflar
+@model List<Blog>
+
+<div class="padding">
+    <h4>Son 10 Blog Yazıları</h4>
+    <ul class="list list-pad">
+        @{ int sayac = 1;}
+
+        @foreach (var i in Model.OrderByDescending(x => x.ID).Take(10))
+        {
+
+            <li class="list-bg"><span>@sayac</span><a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a></li>
+            sayac++;
+
+        }
+
+
+    </ul>
+    <a href="/Blog/Index " class="link1">Daha Fazlasına Git</a>
+</div>

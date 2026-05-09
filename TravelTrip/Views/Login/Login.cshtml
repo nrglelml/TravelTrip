@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Giriş Panel Sayfası</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content=" Master  Login Form Widget Tab Form,Login Forms,Sign up Forms,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="~/weblogin/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Cormorant+SC:300,400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+</head>
+
+<body>
+    <div class="padding-all">
+        <div class="header">
+            <h1>Admin Giriş Paneli</h1>
+        </div>
+
+        <div class="design-w3l">
+            <div class="mail-form-agile">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <input type="text" name="Kullanici" placeholder="Kullanıcı Adı" required="" />
+                    <input type="password" name="Sifre" class="padding" placeholder="Şifre" required="" />
+                    <input type="submit" value="Giriş Yap">
+                }
+            </div>
+            <div class="clear"> </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (ViewBag.BasariliMi == true)
+    {
+        <script>
+        Swal.fire({
+            title: 'Başarılı!',
+            text: 'Giriş Yaptınız. Admin Sayfasına Yönlendiriliyorsunuz.',
+            icon: 'success',
+            confirmButtonText: 'Tamam',
+            confirmButtonColor: '#009688'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("Index", "Admin")';
+            }
+        })
+        </script>
+
+    }
+    @if (ViewBag.BasariliMi == false)
+    {
+
+        <script>
+        Swal.fire({
+            title: 'Tekrar Deneyiniz!',
+            text: 'Kullanıcı Adı veya Şifreniz Yanlış',
+            icon: 'error',
+            confirmButtonText: 'Tamam',
+            confirmButtonColor: '#009688'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("Login","Login")';
+            }
+        })
+        </script>
+
+
+    }
+</body>
+</html>
+
+

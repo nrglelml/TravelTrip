@@ -1,0 +1,52 @@
+﻿@model TravelTrip.Models.Siniflar.Iletisim
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contact">
+    <div class="wrap">
+        <div class="contact-top">
+            <h3>İletişim Formu</h3>
+            <p>Bize mesaj bırakın, en kısa sürede dönüş sağlayalım.</p>
+        </div>
+        <div class="form">
+     
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+            {
+                <div>
+                 
+                    <input type="text" name="AdSoyad" class="textbox" placeholder="Ad Soyad" required>
+                </div>
+                <div>
+                    <input type="text" name="Mail" class="textbox" placeholder="Mail Adresi" required>
+                </div>
+                <div>
+                    <input type="text" name="Konu" class="textbox" placeholder="Konu" required>
+                </div>
+                <div>
+                   
+                    <textarea name="Mesaj" placeholder="Mesajınız..." required style="width:495px; height:210px; resize:none;"></textarea>
+                </div>
+                <div>
+                    <button class="btn btn-primary" style="background-color:#9e3a51; color:white; border:none; padding:10px 20px; cursor:pointer;">Gönder</button>
+                </div>
+            }
+        </div>
+
+        <div class="clear"></div>
+        <div class="contact-bottom">
+        
+            <div class="contact-left">
+                <div class="contact-add">
+                    <h3>Adres</h3>
+                    <p>Mahalle, Sokak No:1, İstanbul/Türkiye</p>
+                    <p>Telefon: +90 212 000 00 00</p>
+                    <p>Email: <a href="mailto:info@traveltrip.com">info@traveltrip.com</a></p>
+                </div>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

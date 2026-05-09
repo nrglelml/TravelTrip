@@ -1,0 +1,85 @@
+﻿@model  TravelTrip.Models.Siniflar.Blog
+@{
+    ViewBag.Title = "YeniBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Blog Ekle</h2>
+
+<form class="form-group" method="post" , enctype="multipart/form-data">
+    @Html.LabelFor(x => x.Baslik)
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Baslik, "", new { @class = "text-danger" }) <br />
+    <br />
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", @rows = "10" })
+    @Html.ValidationMessageFor(x => x.Aciklama, "", new { @class = "text-danger" })
+    <br />
+    @Html.LabelFor(x => x.BlogImage)
+
+    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control", @id = "txtUrl", @placeholder = "Görsel URL'si yapıştırın..." })
+
+    <div class="text-center my-2"><b>VEYA</b></div>
+
+    <input type="file" name="ImageFile" id="fileUpload" class="form-control" accept="image/*" />
+
+    <br />
+    <div id="previewArea" style="display:none; border: 1px solid #ddd; padding: 10px; border-radius: 8px; text-align: center;">
+        <p style="font-size: 12px; color: #888;">Görsel Önizlemesi</p>
+        <img id="imgPreview" src="#" alt="Önizleme" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 5px;" />
+    </div>
+    <br />
+    <button class="btn btn-outline-success">
+        Blog Ekle
+    </button>
+
+</form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (ViewBag.Basarili == true)
+{
+    <script>
+        Swal.fire({
+            title: 'Başarılı!',
+            text: 'Blog başarıyla oluşturuldu.',
+            icon: 'success',
+            confirmButtonText: 'Tamam',
+            confirmButtonColor: '#009688'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Kullanıcı "Tamam" dediği an Index'e yönlendiriyoruz
+                window.location.href = '@Url.Action("Index", "Admin")';
+            }
+        })
+    </script>
+    
+}
+<script>
+    const txtUrl = document.getElementById('txtUrl');
+    const fileUpload = document.getElementById('fileUpload');
+    const imgPreview = document.getElementById('imgPreview');
+    const previewArea = document.getElementById('previewArea');
+
+    // URL değiştiğinde önizle
+    txtUrl.addEventListener('input', function () {
+        if (this.value) {
+            imgPreview.src = this.value;
+            previewArea.style.display = 'block';
+            fileUpload.value = ''; // URL girilirse dosya seçimini temizle
+        }
+    });
+
+    // Dosya seçildiğinde önizle
+    fileUpload.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                previewArea.style.display = 'block';
+                txtUrl.value = ''; // Dosya seçilirse URL alanını temizle
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

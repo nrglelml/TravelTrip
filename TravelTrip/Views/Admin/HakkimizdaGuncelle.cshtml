@@ -1,0 +1,57 @@
+﻿@model TravelTrip.Models.Siniflar.Hakkimizda
+@{
+    ViewBag.Title = "HakkimizdaGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımızda Bilgilerini Güncelle</h2>
+
+@using (Html.BeginForm("HakkimizdaGuncelle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ID)
+
+<div class="mb-3">
+    @Html.LabelFor(x => x.Aciklama, "Hakkımızda Açıklama")
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "10" })
+</div>
+
+    <div class="mb-3">
+        <label>Görsel URL (İsteğe Bağlı)</label>
+        @Html.TextBoxFor(x => x.FotoURL, new { @class = "form-control", id = "txtUrl" })
+    </div>
+
+    <div class="text-center my-2"><b>VEYA</b></div>
+
+    <div class="mb-3">
+        <label>Bilgisayardan Görsel Seç</label>
+        <input type="file" name="ImageFile" id="fileUpload" class="form-control" accept=".jpg, .jpeg, .png" />
+    </div>
+    <div id="previewArea" style="text-align: center; margin-bottom:15px;">
+        <p>Görsel Önizlemesi</p>
+        <img id="imgPreview" src="@Model.FotoURL" style="max-width: 300px; border-radius: 8px; border: 1px solid #ddd;" />
+    </div>
+
+    <button class="btn btn-outline-success w-100 py-2">Bilgileri Güncelle</button>
+}
+
+<script>
+    const txtUrl = document.getElementById('txtUrl');
+    const fileUpload = document.getElementById('fileUpload');
+    const imgPreview = document.getElementById('imgPreview');
+
+    txtUrl.addEventListener('input', function () {
+        if (this.value) imgPreview.src = this.value;
+    });
+
+    fileUpload.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                txtUrl.value = '';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

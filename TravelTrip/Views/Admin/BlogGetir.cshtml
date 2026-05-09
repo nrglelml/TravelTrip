@@ -1,0 +1,102 @@
+﻿@model TravelTrip.Models.Siniflar.Blog
+@{
+    ViewBag.Title = "BlogGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog Güncelleme Sayfası</h2>
+
+<div class="card p-4 shadow-sm">
+    @using (Html.BeginForm("BlogGuncelle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="mb-3">
+            @Html.LabelFor(x => x.ID, "Blog ID")
+            @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Baslik, "Başlık")
+            @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Baslik, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Aciklama, "Açıklama")
+            @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", @rows = "10" })
+            @Html.ValidationMessageFor(x => x.Aciklama, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Tarih, "Oluşturulma Tarihi")
+            @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.BlogImage, "Görsel URL")
+            @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control", @id = "txtUrl", @placeholder = "Görsel URL'si yapıştırın..." })
+        </div>
+
+        <div class="text-center my-3"><span class="badge bg-secondary">VEYA DOSYA YÜKLEYİN</span></div>
+
+        <div class="mb-3">
+            <input type="file" name="ImageFile" id="fileUpload" class="form-control" accept="image/*" />
+        </div>
+
+        <div id="previewArea" style="@(string.IsNullOrEmpty(Model.BlogImage) ? "display:none;" : "display:block;") border: 1px solid #ddd; padding: 10px; border-radius: 8px; text-align: center; margin-bottom:15px;">
+            <p style="font-size: 12px; color: #888;">Görsel Önizlemesi</p>
+            <img id="imgPreview" src="@Model.BlogImage" alt="Önizleme" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 5px;" />
+        </div>
+
+        <button class="btn btn-outline-success w-100 py-2">
+            <i class="fas fa-save"></i> Blog Bilgilerini Güncelle
+        </button>
+    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const txtUrl = document.getElementById('txtUrl');
+    const fileUpload = document.getElementById('fileUpload');
+    const imgPreview = document.getElementById('imgPreview');
+    const previewArea = document.getElementById('previewArea');
+
+    // URL değiştiğinde önizle
+    txtUrl.addEventListener('input', function () {
+        if (this.value) {
+            imgPreview.src = this.value;
+            previewArea.style.display = 'block';
+            fileUpload.value = '';
+        }
+    });
+
+    // Dosya seçildiğinde önizle
+    fileUpload.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                previewArea.style.display = 'block';
+                txtUrl.value = '';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+@if (ViewBag.Basarili == true)
+{
+    <script>
+        Swal.fire({
+            title: 'Başarılı!',
+            text: 'Blog güncellendi, listeye yönlendiriliyorsunuz.',
+            icon: 'success',
+            confirmButtonText: 'Tamam',
+            confirmButtonColor: '#009688'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("Index", "Admin")';
+            }
+        })
+    </script>
+}

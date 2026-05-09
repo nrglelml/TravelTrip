@@ -1,0 +1,44 @@
+﻿@using TravelTrip.Models.Siniflar
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using TravelTrip.Helper
+
+
+@if (TempData["SilmeMesaj"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["SilmeMesaj"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<h2>Blog Listesi</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>BAŞLIK</th>
+        <th>TARİH</th>
+        <th>İŞLEMLER</th>
+        <th>DETAYLAR</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <th>@i.ID</th>
+            <th>@i.Baslik</th>
+            <th>@i.Tarih.ToShortDateString()</th>
+            <th>
+                <a href="/Admin/BlogSil/@i.ID" class="btn btn-outline-danger">SİL</a> <br />
+                <a href="/Admin/BlogGetir/@i.ID" class="btn btn-outline-warning">GÜNCELLE</a>
+            </th>
+            <th><a href="/Admin/BlogDetay/@i.ID" class="btn btn-outline-secondary">DETAYA GİT</a> </th>
+
+        </tr>
+    }
+
+
+</table>
+<a href="/Admin/YeniBlog" class="btn btn-outline-primary">Yeni Blog</a>

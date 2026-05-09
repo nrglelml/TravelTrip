@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+@using TravelTrip.Models.Siniflar
+@model List<Blog>
+@using TravelTrip.Helper
+
+<div class="padding1">
+    <h4>En Beğendiğim Yerler</h4>
+    <div class="box-left">
+        @foreach (var i in Model.Take(3))
+        {
+            <div class="bot-img">
+                <img src="@i.BlogImage" alt="" />
+            </div>
+            <div class="bot-desc">
+                <h5><a href="/Blog/BlogDetay/@i.ID" style="color:darkcyan">@i.Baslik</a></h5>
+                <p> @i.Aciklama.KelimeBolmedenKisalt(70)</p>
+            </div>
+            <div class="clear"></div>
+        }
+    </div>
+    <div class="box1-left">
+        @foreach (var i in Model.Where(x => x.ID >= 7 && x.ID <= 9).OrderByDescending(x => x.ID))
+        {
+            <div class="bot-img">
+                <img src="@i.BlogImage" alt="" />
+            </div>
+            <div class="bot-desc">
+                <h5><a href="/Blog/BlogDetay/@i.ID" style="color:darkcyan">@i.Baslik</a></h5>
+                <p> @i.Aciklama.KelimeBolmedenKisalt(70)</p>
+            </div>
+            <div class="clear"></div>
+        }
+       
+    </div>
+</div>

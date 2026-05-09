@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using TravelTrip.Models.Siniflar
+@model List<Blog>
+
+
+<div class="header-banner">
+    <div class="wrap">
+        <div class="banner">
+            <div class="indent">
+                <h2 class="indent-left margin-bot" style="margin-left:80px">Tatil & Seyahat Bloğum</h2>
+                <div class="banner-left">
+             
+                    <div class="clear"></div>
+                </div>
+                <div class="header_bottom_right_images">
+                    <div class="slider" style="width:650px; height:355px; overflow:hidden;">
+                        <ul class="rslides" id="slider1">
+                            @foreach (var i in Model)
+                            {
+                                <li>
+                                    <img src="@i.BlogImage" alt="" style="width:100%; height:355px; object-fit: cover;">
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class"content">
+    <div class="wrap">
+        <div class="wrapper">
+            <div class="con-top">
+                <h3>Tatil Seyahat Bloğuma Hoşgeldiniz!</h3>
+                <p>
+                    Bazen ne kadar uzun süre dinlendiğinizi sansanız da yorgunluk geçmez. Çünkü zihinsel yorgunluk, yalnızca uyuyarak ya da evde kalarak azalmaz. Gürültüye, kalabalığa, telaşa alışmış olmak onlardan etkilenmediğiniz anlamına gelmez. Tam tersine, fark etmeden taşınan sesler, insanları, ekranları ve koşuşturmayı sessizliğe ihtiyaç duyduğun bir noktaya getirir. Bu yüzden bazı tatil yerleri doğasıyla birlikte sunduğu azlıkla, ritmiyle ve sessizlik kapasitesiyle iyileştirici olur. Kalabalıktan kopmak, plan yapmadan yaşamak, sadece manzara izleyerek bir günü tamamlayabilmek… Bunlar gerçek bir dinlenmenin işaretleridir. Bu içerikte, tam da bu özelliklere sahip, şehir gürültüsünden sonra zihne ve ruha iyi gelen tatil duraklarını keşfedeceksiniz. Her biri farklı ama ortak bir sessizlikte buluşuyor.
+
+                    Hazırsanız başlayalım.
+                </p>
+            </div>
+            @Html.Action("Partial1","Home")
+          
+            <br />
+
+            <div class="grids">
+                <div class="box1">
+                    @Html.Action("Partial2", "Home")
+                    @Html.Action("Partial3", "Home")
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿/* Sidebar'ın sayfayla birlikte büyümesini sağlar */
+.d-flex {
+    display: flex !important;
+}
+
+.flex-grow-1 {
+    flex-grow: 1 !important;
+    background-color: #ffffff;
+    overflow-y: auto; /* İçerik çok uzunsa sadece sağ taraf kayar */
+}
+
+/* Sidebar Linkleri İçin Modern Dokunuş */
+.nav-link {
+    transition: all 0.3s;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+    .nav-link.link-dark:hover {
+        background-color: #e9ecef;
+        color: #f598b8 !important;
+    }
+
+    .nav-link.active {
+        background-color: #f598b8 !important;
+        box-shadow: 0 4px 6px rgba(13, 110, 253, 0.2);
+    }
+
+/* İnce bir sağ çizgi (Border) */
+.border-right {
+    border-right: 1px solid #dee2e6 !important;
+}
+
+/* Sidebar Başlığı */
+.fs-4 {
+    font-size: 1.5rem;
+    color: #333;
+}
+/* Dropdown Menü Genel Stil */
+.dropdown-menu {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
+    min-width: 180px;
+    font-size: 14px;
+}
+
+/* Dropdown Linkleri */
+.dropdown-item {
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    color: #4b5563;
+    transition: all 0.2s;
+}
+
+    .dropdown-item:hover {
+        background-color: #f3f4f6;
+        color: #0d6efd;
+        padding-left: 1.2rem; /* Hafif bir kayma efekti */
+    }
+
+/* Çizgi Stili */
+.dropdown-divider {
+    margin: 0.5rem 0;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Kullanıcı İsmi ve Profil Resmi */
+#dropdownUser2 {
+    padding: 5px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+    #dropdownUser2:hover {
+        background-color: #f3f4f6;
+    }
+
+    #dropdownUser2 strong {
+        font-weight: 500;
+        margin-left: 5px;
+    }
