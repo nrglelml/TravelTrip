@@ -38,7 +38,6 @@ M&Y Yazılım Eğitim Akademi Danışmanlık bünyesinde, **Murat Yücedağ** me
 <img width="592" height="847" alt="image" src="https://github.com/user-attachments/assets/e140290e-8be6-4358-bb8d-23fc402113c9" />
 <img width="1065" height="832" alt="image" src="https://github.com/user-attachments/assets/d85ec693-ef9f-44ee-8668-f6b41efcbdea" />
 <img width="1280" height="577" alt="image" src="https://github.com/user-attachments/assets/b6c2f970-ecef-4de9-8d67-94b748f068a5" />
-
 ---
 
 ## 💻 Kurulum ve Çalıştırma
@@ -48,8 +47,6 @@ Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları t
 1. **Projeyi Klonlayın:**
    ```bash
    git clone [https://github.com/nrglelml/TravelTrip.git]
-   Bağlantı Adresini Düzenleyin:
-Web.config dosyası içerisindeki connectionString alanını kendi yerel SQL Server bilgilerinize göre güncelleyin:
 
 2. **Bağlantı Adresini Düzenleyin:**
 Web.config dosyası içerisindeki connectionString alanını kendi yerel SQL Server bilgilerinize göre güncelleyin:
