@@ -53,8 +53,9 @@ Web.config dosyası içerisindeki connectionString alanını kendi yerel SQL Ser
 <connectionStrings>
   <add name="Context" connectionString="data source=YOUR_SERVER_NAME;initial catalog=TravelTripDb;integrated security=true;" providerName="System.Data.SqlClient" />
 </connectionStrings>
+
 3. **Veritabanı Oluşturun:**
-   Tablolar:
+    Tablolar:
    <img width="674" height="406" alt="image" src="https://github.com/user-attachments/assets/e679cb17-4f49-4840-9edf-143fb2f9708a" />
    <img width="702" height="336" alt="image" src="https://github.com/user-attachments/assets/870b0b35-aaee-437d-a726-0b28e4a30b97" />
    <img width="613" height="258" alt="image" src="https://github.com/user-attachments/assets/df9e44f4-b521-479c-a18f-f52a852dc6d5" />
@@ -62,7 +63,9 @@ Web.config dosyası içerisindeki connectionString alanını kendi yerel SQL Ser
    <img width="720" height="294" alt="image" src="https://github.com/user-attachments/assets/dc71e86a-84b8-48f7-bdb8-10f31ef1cf35" />
    <img width="699" height="318" alt="image" src="https://github.com/user-attachments/assets/48cbc8df-a0c0-429e-b2f3-36bbfe260de7" />
    <img width="666" height="809" alt="image" src="https://github.com/user-attachments/assets/2a65c333-9a08-4b1e-91c1-d0259e0218c9" />
-   Package Manager Console ekranını açın ve Code First migration işlemlerini tetikleyin
+   
+       Package Manager Console ekranını açın ve Code First migration işlemlerini tetikleyin
        Update-Database
+   
 5. **Projeyi Çalıştırın
     Visual Studio üzerinden F5 tuşuna basarak projeyi ayağa kaldırabilirsiniz.
